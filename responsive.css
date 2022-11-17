@@ -1,0 +1,91 @@
+@media (max-width:425px) {
+    nav .logo p {
+    font-size: small;
+    display: block;
+    font-weight: bolder;
+    padding: 6px;
+}
+
+.logo p {
+    margin-right: 0px;
+}
+
+.ninjaken {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    margin: 0 auto;
+    padding-top: 10px;
+}
+
+.hero h1 {
+    padding-top: 100px;
+    margin: 0;
+    font-size: 300%;
+}
+
+.hero p {
+    font-size: 150%;
+    padding-top: 10px;
+    margin: 0;
+}
+
+.ninjakenimg {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.contoh {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+}
+
+.card .img {
+    position: relative;
+    width: 200px;
+    height: 200px;
+}
+
+.img img {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+}
+
+@media (max-width:375px) {
+    nav .logo p {
+    font-size: x-small;
+    text-orientation: upright;
+    display: block;
+    font-weight: bolder;
+    padding: 6px;
+}
+}
+
+@media (max-width:320px) {
+    * {
+        box-sizing: border-box;
+    }
+
+    nav .logo p {
+    font-size: x-small;
+    text-orientation: upright;
+    display: flex;
+    font-weight: bolder;
+    padding: 6px;
+}
+
+    
+
+
+}
+
