@@ -25,15 +25,23 @@
     />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="responsive.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
   </head>
   <body>
-    <nav>
+    <nav class="topnav" id="myTopnav">
       <a class="logo" href="">
         <p>N I N J A <span> K E N </span></p>
       </a>
       <a href="#tentang-saya"><p>Tentang Saya</p></a>
       <a href="#proyek-contoh"><p>Proyek Contoh</p></a>
       <a href="#hubungi-saya"><p>Hubungi Saya</p></a>
+      <a href="#faq"><p>FAQ</p></a>
+      <a href="javascript:void(0);" class="icon" onclick="openNavbar()">
+        <i class="fa fa-bars"></i>
+      </a>
     </nav>
     <main>
       <section class="hero">
@@ -55,23 +63,51 @@
       <section class="proyek" id="proyek-contoh">
         <h1>Proyek Contoh</h1>
         <div class="contoh">
-          <div class="card">
+          <div onclick="openModal()" class="card slider-item fade">
             <div class="img">
               <img src="/img/1.png" alt="" />
             </div>
             <p>Image 1</p>
           </div>
-          <div class="card">
+          <div onclick="openModal()" class="card slider-item fade">
             <div class="img">
               <img src="/img/2.png" alt="" />
             </div>
             <p>Image 2</p>
           </div>
-          <div class="card">
+          <div onclick="openModal()" class="card slider-item fade">
             <div class="img">
               <img src="/img/3.png" alt="" />
             </div>
             <p>Image 3</p>
+          </div>
+          <div onclick="openModal()" class="card slider-item fade">
+            <div class="img">
+              <img src="/img/1.png" alt="" />
+            </div>
+            <p>Image 4</p>
+          </div>
+          <div onclick="openModal()" class="card slider-item fade">
+            <div class="img">
+              <img src="/img/2.png" alt="" />
+            </div>
+            <p>Image 5</p>
+          </div>
+          <div onclick="openModal()" class="card slider-item fade">
+            <div class="img">
+              <img src="/img/3.png" alt="" />
+            </div>
+            <p>Image 6</p>
+          </div>
+          <a class="prev" onclick="updateSlide(-1)">&#10094;</a>
+          <a class="next" onclick="updateSlide(1)">&#10095;</a>
+        </div>
+        <div id="myModal">
+          <div id="modalContent">
+            <span id="closeModalIcon">&times;</span>
+            <h2>Halo semua!</h2>
+            <p>Saya sekarang belajar Frontend Developer Course.</p>
+            <p>Dan ini adalah modal atau pop-up untuk detail dari gambar</p>
           </div>
         </div>
       </section>
@@ -90,9 +126,50 @@
             <textarea
               class="message"
               placeholder="Message (Diperlukan)"
+              required
             ></textarea>
             <button type="submit">Kirim</button>
           </form>
+        </div>
+      </section>
+      <section id="faq">
+        <h2>Frequently Asked Question</h2>
+
+        <button class="accordion">Siapa aku ?</button>
+        <div class="panel">
+          <p>
+            Namaku Ninja Ken, aku adalah ninja yang tak pernah bosan dan
+            menyerah dalam belajar pemrograman web
+          </p>
+        </div>
+
+        <button class="accordion">Skill apa yang sekarang aku kuasai ?</button>
+        <div class="panel">
+          <ul>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>Javascript</li>
+            <li>Bootstrap</li>
+            <li>Tailwind CSS</li>
+            <li>ReactJS</li>
+            <li>Next JS</li>
+          </ul>
+        </div>
+
+        <button class="accordion">
+          Skill apa yang aku ingin kuasai kedepannya ?
+        </button>
+        <div class="panel">
+          <ul>
+            <li>Redux</li>
+            <li>React Advance</li>
+            <li>Next JS 13 or Advance</li>
+            <li>PHP</li>
+            <li>Laravel</li>
+            <li>Node JS</li>
+            <li>Express JS/Nest JS</li>
+            <li>and many more</li>
+          </ul>
         </div>
       </section>
     </main>
@@ -102,7 +179,69 @@
         <li><a href="#tentang-saya"> Tentang Saya </a></li>
         <li><a href="#proyek-contoh"> Proyek Contoh </a></li>
         <li><a href="#hubungi-saya"> Hubungi Saya</a></li>
+        <li><a href="#faq"> FAQ</a></li>
       </ul>
     </footer>
+
+    <script>
+      const accordion = document.getElementsByClassName("accordion");
+
+      for (let index = 0; index < accordion.length; index++) {
+        accordion[index].addEventListener("click", function () {
+          const panel = this.nextElementSibling;
+
+          if (panel.style.display === "block") {
+            panel.style.display = "none";
+          } else {
+            panel.style.display = "block";
+          }
+        });
+      }
+
+      let slideIndex = 0;
+
+      const updateSlide = (n) => {
+        slideIndex += n;
+        showSlide(slideIndex);
+      };
+
+      const showSlide = (n) => {
+        const slides = document.getElementsByClassName("slider-item");
+        if (n > slides.length - 1) {
+          slideIndex = 0;
+        }
+        if (n < 0) {
+          slideIndex = slides.length - 1;
+        }
+        for (let i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        slides[slideIndex].style.display = "block";
+      };
+
+      showSlide(slideIndex);
+
+      const modal = document.getElementById("myModal");
+      const closeIcon = document.getElementById("closeModalIcon");
+
+      // Ketika tombol openButton ditekan
+      function openModal() {
+        modal.style.display = "block";
+      }
+
+      // Ketika tombol closeButton ditekan
+      closeIcon.addEventListener("click", () => {
+        modal.style.display = "none";
+      });
+
+      function openNavbar() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+          x.className += " responsive";
+        } else {
+          x.className = "topnav";
+        }
+      }
+    </script>
   </body>
 </html>
